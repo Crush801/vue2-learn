@@ -28,13 +28,16 @@ export default {
   mounted() {
     this.$EventBus.$on("deleteTask", (param) => {
       console.log(param);
-      const index = this.tasks.findIndex((task) => task.id == param.id);
-      this.tasks.splice(index, 1);
+      this.deleteTask(param.id);
     });
   },
   methods: {
     addTask(todo) {
       this.tasks.push(todo);
+    },
+    deleteTask(id) {
+      const index = this.tasks.findIndex((task) => task.id == id);
+      this.tasks.splice(index, 1);
     },
   },
 };
