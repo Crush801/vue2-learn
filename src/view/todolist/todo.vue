@@ -5,15 +5,19 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import ToDoItem from "./ToDoItem.vue";
 export default {
   components: {
     ToDoItem,
   },
-  props: ["tasks"],
   data() {
     return {};
   },
+  computed: mapState([
+    // 映射 this.count 为 store.state.count
+    "tasks",
+  ]),
   methods: {},
 };
 </script>

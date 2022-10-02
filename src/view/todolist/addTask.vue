@@ -26,7 +26,7 @@ export default {
         taskDate: time,
       };
       this.input = "";
-      this.$emit("addTask", this.todo);
+      this.$store.commit("addTask", this.todo);
     },
   },
 };
