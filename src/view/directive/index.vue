@@ -8,11 +8,7 @@
 export default {
   directives: {
     hover: {
-      inserted(el, binding, vnode, oldVnode) {
-        console.log("el", el);
-        console.log("binding", binding);
-        console.log("vnode", vnode);
-        console.log("oldVnode", oldVnode);
+      inserted(el) {
         el.classList.add(".color");
       },
     },

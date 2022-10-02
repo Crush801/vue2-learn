@@ -1,6 +1,10 @@
 <template>
   <div>
-    <el-input v-model="input" placeholder="Add a task to 「tasks」"></el-input>
+    <el-input
+      v-model="input"
+      placeholder="Add a task to 「tasks」"
+      :todo="todo"
+    ></el-input>
     <el-button @click="addTask">add</el-button>
   </div>
 </template>
@@ -10,17 +14,19 @@ export default {
   data() {
     return {
       input: "",
+      todo: {},
     };
   },
   methods: {
     addTask() {
       let time = new Date();
-      this.tasks.push({
+      this.todo = {
         id: new Date().getTime(),
         value: this.input,
         taskDate: time,
-      });
+      };
       this.input = "";
+      this.$emit("addTask", this.todo);
     },
   },
 };

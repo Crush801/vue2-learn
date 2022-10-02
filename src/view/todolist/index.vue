@@ -1,27 +1,23 @@
 <template>
   <div>
     <h1>{{ total }}</h1>
-    <AddTask></AddTask>
-    <ToDoItem
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task"
-      @deleteTask="deleteTask"
-    ></ToDoItem>
+    <AddTask @addTask="addTask" />
+    <ToDo :tasks="tasks" @deleteTask="deleteTask" />
   </div>
 </template>
 
 <script>
-import ToDoItem from "./ToDoItem.vue";
+import ToDo from "./todo.vue";
 import AddTask from "./addTask.vue";
 export default {
-  components: { ToDoItem, AddTask },
+  components: { ToDo, AddTask },
   data() {
     return {
       id: new Date().getTime(),
       tasks: [],
     };
   },
+  props: ["todo"],
   computed: {
     // 计算属性的 getter
     total() {
@@ -30,14 +26,9 @@ export default {
     },
   },
   methods: {
-    addTask() {
-      let time = new Date();
-      this.tasks.push({
-        id: new Date().getTime(),
-        value: this.input,
-        taskDate: time,
-      });
-      this.input = "";
+    addTask(todo) {
+      console.log(todo);
+      this.tasks.push(todo);
     },
     deleteTask(id) {
       const index = this.tasks.findIndex((task) => task.id == id);
