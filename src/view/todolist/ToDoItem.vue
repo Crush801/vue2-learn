@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     deleteTask(id) {
-      this.$emit("deleteTask", id);
+      this.$EventBus.$emit("deleteTask", id);
     },
   },
 };

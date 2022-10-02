@@ -10,6 +10,8 @@ Vue.config.productionTip = false;
 
 // 注册一个全局自定义指令 `v-focus`
 
+Vue.prototype.$EventBus = new Vue();
+
 new Vue({
   router,
   render: (h) => h(App),

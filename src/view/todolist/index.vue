@@ -2,7 +2,7 @@
   <div>
     <h1>{{ total }}</h1>
     <AddTask @addTask="addTask" />
-    <ToDo :tasks="tasks" @deleteTask="deleteTask" />
+    <ToDo :tasks="tasks" />
   </div>
 </template>
 
@@ -25,14 +25,16 @@ export default {
       return this.tasks.length;
     },
   },
+  mounted() {
+    this.$EventBus.$on("deleteTask", (param) => {
+      console.log(param);
+      const index = this.tasks.findIndex((task) => task.id == param.id);
+      this.tasks.splice(index, 1);
+    });
+  },
   methods: {
     addTask(todo) {
-      console.log(todo);
       this.tasks.push(todo);
-    },
-    deleteTask(id) {
-      const index = this.tasks.findIndex((task) => task.id == id);
-      this.tasks.splice(index, 1);
     },
   },
 };

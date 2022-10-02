@@ -1,11 +1,6 @@
 <template>
   <div>
-    <ToDoItem
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task"
-      @deleteTask="$emit('deleteTask', $event)"
-    ></ToDoItem>
+    <ToDoItem v-for="task in tasks" :key="task.id" :task="task"></ToDoItem>
   </div>
 </template>
 
@@ -19,9 +14,7 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    deleteTask() {},
-  },
+  methods: {},
 };
 </script>
 
