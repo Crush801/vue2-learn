@@ -10,13 +10,13 @@
 </template>
 
 <script>
+import useTodo from "@/hooks/useTodo";
 const dayjs = require("dayjs");
 export default {
   props: ["task"],
   data() {
     return {
       checked: false,
-      input: "",
     };
   },
   filters: {
@@ -24,10 +24,11 @@ export default {
       return dayjs(value).format();
     },
   },
-  methods: {
-    deleteTask(id) {
-      this.$store.commit("deleteTask", id);
-    },
+  setup() {
+    const { deleteTask } = useTodo();
+    return {
+      deleteTask,
+    };
   },
 };
 </script>

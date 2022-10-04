@@ -5,20 +5,18 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import useTodo from "@/hooks/useTodo";
 import ToDoItem from "./ToDoItem.vue";
 export default {
   components: {
     ToDoItem,
   },
-  data() {
-    return {};
+  setup() {
+    const { tasks } = useTodo();
+    return {
+      tasks,
+    };
   },
-  computed: mapState([
-    // 映射 this.count 为 store.state.count
-    "tasks",
-  ]),
-  methods: {},
 };
 </script>
 

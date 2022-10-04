@@ -7,24 +7,17 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import useTodo from "@/hooks/useTodo";
 import ToDo from "./todo.vue";
 import AddTask from "./addTask.vue";
 
 export default {
   components: { ToDo, AddTask },
-  data() {
+  setup() {
+    const { total } = useTodo();
     return {
-      id: new Date().getTime(),
-      tasks: [],
+      total,
     };
-  },
-  props: ["todo"],
-  computed: {
-    ...mapGetters(["total"]),
-    // total() {
-    //   return this.$store.getters.total
-    // }
   },
 };
 </script>
