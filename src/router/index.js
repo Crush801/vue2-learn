@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 const Dialog = () => import("../view/dialog");
 const Directive = () => import("../view/directive");
 const ToDoList = () => import("../view/todolist");
+const Movie = () => import("../view/movie");
+const Computed = () => import("../view/computed");
 
 Vue.use(VueRouter);
 
@@ -22,6 +24,14 @@ const routes = [
   {
     path: "/todolist",
     component: ToDoList,
+  },
+  {
+    path: "/movie",
+    component: Movie,
+  },
+  {
+    path: "/computed",
+    component: Computed,
   },
 ];
 
